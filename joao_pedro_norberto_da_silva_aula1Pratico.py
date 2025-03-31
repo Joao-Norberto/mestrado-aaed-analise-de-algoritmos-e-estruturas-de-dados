@@ -1,4 +1,5 @@
 import random
+import time
 
 random_vector = [random.randint(1, 1000000) for i in range(100000)]
 
@@ -27,6 +28,12 @@ def is_prime_number(n: int) -> bool:
             return False
     return True
 
-result_list = [is_prime_recursive(n) for n in random_vector]
-print(result_list[:10])
+start = time.time()
+result_list_recursive = [is_prime_recursive(n) for n in random_vector]
+end = time.time()
+print(f"Tempo (recursivo): {end - start:.6f} segundos")
 
+start = time.time()
+result_list_iterative = [is_prime_number(n) for n in random_vector]
+end = time.time()
+print(f"Tempo (iterativo): {end - start:.6f} segundos")
